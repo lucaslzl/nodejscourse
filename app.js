@@ -8,21 +8,50 @@ const utils = require('./utils.js')
 const notes = require('./notes.js')
 
 
-//fs.writeFileSync('notes.txt', 'This file was created by nodejs')
-//fs.appendFileSync('notes.txt', '\nSee if it works')
+/* Write files */
+// fs.writeFileSync('notes.txt', 'This file was created by nodejs')
+// fs.appendFileSync('notes.txt', '\nSee if it works')
 
-console.log(utils(2, 3))
-console.log(notes())
-console.log(chalk.green.bold('Hello world!'))
+/* Print and call another code */
+// console.log(utils(2, 3))
+// console.log(notes())
+// console.log(chalk.green.bold('Hello world!'))
 
-console.log(process.argv[2])
+/* Implement parameters */
+// command = process.argv[2]
 
-command = process.argv[2]
+yargs.version('1.1.0')
 
-if (command == 'add'){
-	console.log('Adding')
-} else if (command == 'remove'){
-	console.log('Removing')
-} else {
-	console.log('Doing nothing')
-}
+yargs.command({
+	command: 'add',
+	describe: 'add a new note',
+	handler: function() {
+		console.log('Adding a new note')
+	}
+})
+
+yargs.command({
+	command: 'remove',
+	describe: 'remove a note',
+	handler: function() {
+		console.log('Removing a note')
+	}
+})
+
+yargs.command({
+	command: 'list',
+	describe: 'List the notes',
+	handler: function() {
+		console.log('List the notes')
+	}
+})
+
+yargs.command({
+	command: 'read',
+	describe: 'Read a note',
+	handler: function() {
+		console.log('Read a note')
+	}
+})
+
+console.log(yargs.argv)
